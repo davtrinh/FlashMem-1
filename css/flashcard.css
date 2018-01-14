@@ -76,7 +76,7 @@ body
 /* front pane, placed above back */
 .front 
 {
-    z-index: 4;
+    z-index: 2;
 }
 
 /* back, initially hidden pane */
