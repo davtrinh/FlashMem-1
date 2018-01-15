@@ -1,0 +1,91 @@
+body {
+  color: #4E5A74;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  line-height: 2.5;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size:20px;
+  text-transform: uppercase;
+  line-height: 1.3;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+p {
+  font-family: "Roboto Slab", serif;
+  font-weight: 300;
+}
+
+.btn 
+{
+    width: 15em;
+    font-size: 18px;
+}
+
+.main-header {
+  color: #fff;
+  padding: 20% 3%;
+  background-image: -webkit-linear-gradient(rgba(19, 9, 51, 0.7), transparent 90%), -webkit-linear-gradient(-270deg, #fff, transparent 90%), url("http://i2.chroniclelive.co.uk/incoming/article5694826.ece/alternates/s1227b/Gateshead-Quayside-by-Ian-Hunter.jpg");
+  background-image: linear-gradient(rgba(19, 9, 51, 0.7), transparent 90%), linear-gradient(0deg, #fff, transparent 90%), url("http://i2.chroniclelive.co.uk/incoming/article5694826.ece/alternates/s1227b/Gateshead-Quayside-by-Ian-Hunter.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (min-width: 1024px) {
+  .main-header {
+    max-height: 850px;
+    padding-top: 204.8px;
+    padding-bottom: 204.8px;
+  }
+}
+@media (max-width: 768px) {
+  .main-header {
+    padding: 40% 3%;
+  }
+}
+.main-header .top {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: 80px;
+}
+.main-header .top i {
+  display: block;
+  font-size: 7em;
+}
+
+.howay {
+  padding: 20%;
+  margin: 80px auto 20px;
+  border-radius: 8px;
+  background-image: -webkit-linear-gradient(-45deg, rgba(19, 9, 51, 0.9), rgba(19, 9, 51, 0.9)), url("http://i1.thejournal.co.uk/incoming/article4341038.ece/alternates/s615/aerial-view-of-newcastle-and-gateshead-981645981.jpg");
+  background-image: linear-gradient(-45deg, rgba(19, 9, 51, 0.9), rgba(19, 9, 51, 0.9)), url("http://i1.thejournal.co.uk/incoming/article4341038.ece/alternates/s615/aerial-view-of-newcastle-and-gateshead-981645981.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 50px 10px rgba(0, 0, 0, 0.8);
+}
+
+.border {
+  display: block;
+  width: 20%;
+  margin: 0 auto 25px;
+  border-bottom: 2px solid;
+}
+
+.less-marging {
+  margin-top: -60px;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style></head><body>
+<!-- 
+
+Treehouse Project - CSS Basics
