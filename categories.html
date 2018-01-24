@@ -2,6 +2,22 @@
 <head>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/categories.css">
+
+	<script src="js/setCategories.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyDhF1jxf0_Ygo2-gxRBRXDj1Ow7OscuWA8",
+	    authDomain: "flashmem-8851f.firebaseapp.com",
+	    databaseURL: "https://flashmem-8851f.firebaseio.com",
+	    projectId: "flashmem-8851f",
+	    storageBucket: "flashmem-8851f.appspot.com",
+	    messagingSenderId: "79494769845"
+	  };
+	  firebase.initializeApp(config);
+	</script>
 </head>
 
 <body>
@@ -10,31 +26,16 @@
 			<h4><a href="file:///D:\FlashMem\welcome.html">FlashMem</a></h4>
 		</div>
 	</div>    
-		<div class="row">
-			<h1>Categories</h1>
-			<hr/>
-		</div>
+
+	<div class="row">
+		<h1 id="categoryTitle">Categories</h1>
+		<hr/>
+	</div>
 		
-		<div class="categoryContainer">
-			<div class="row">
-				<a class="btn btn-info loading">Git</a>
-				<br>&nbsp
-			</div>
-			
-			<div class="row">
-				<a class="btn btn-info loading">Interview Questions</a>
-				<br>&nbsp
-			</div>
-			
-			<div class="row">
-				<a class="btn btn-info loading">Javascript</a>
-				<br>&nbsp
-			</div>
-			
-			<div class="row">
-				<a class="btn btn-info loading">Vocabulary</a>
-				<br>&nbsp
-			</div>
-		</div>
+	<div id="categoryContainer">
+	</div>
+
+	<div>
+		<button id="backBtn" class="btn btn-default" type="button">Back</a>
 	</div>
 </body>
