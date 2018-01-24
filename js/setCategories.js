@@ -1,5 +1,5 @@
 window.onload = function() {
-	document.getElementById('backBtn').onclick = clearArray;
+	document.getElementById('backBtn').onclick = resetCategories;
 
 	//if (!data || data.path[1] == undefined) {
 		setCategories();
@@ -57,7 +57,7 @@ function clearButtons(div)
 	}
 }
 
-function clearArray() 
+function resetCategories() 
 {
 	var div = document.getElementById("categoryContainer");
 	clearButtons(div);
