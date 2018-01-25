@@ -1,3 +1,21 @@
+var list;
+
+window.onload = function() 
+{
+	var topic = sessionStorage.getItem("topic");
+	var subTopic = sessionStorage.getItem("subTopic");
+	var path = firebase.database().ref("Categories/" + topic + "/" + subTopic);
+
+	path.on("value", function(snapshot)
+	{
+		console.log(snapshot.key);
+		var question = snapshot.key;
+		list = snapshot.val;
+		document.getElementById("question").innerHTML = question;
+		document.getElementById("answer").innerHTML = path;
+	});
+}
+
 function rotateCard(btn)
 {
     var $card = $(btn).closest('.card-container');
@@ -11,3 +29,4 @@ function rotateCard(btn)
         $card.addClass('hover');
     }
 }
+

@@ -43,6 +43,8 @@ function setSubCategories(topic) {
 		a.onclick = function() 
 		{
 			window.location.href = "flashcard.html";
+			sessionStorage.setItem("topic",  topic);
+			sessionStorage.setItem("subTopic", subtopic);
 		};
 		a.innerHTML = subtopic;
 		div.appendChild(a);

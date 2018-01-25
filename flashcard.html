@@ -8,6 +8,19 @@
         <link rel="stylesheet" type="text/css" href="css/flashcard.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
         <script type = "text/javascript" src="js/flashcardFlip.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyDhF1jxf0_Ygo2-gxRBRXDj1Ow7OscuWA8",
+            authDomain: "flashmem-8851f.firebaseapp.com",
+            databaseURL: "https://flashmem-8851f.firebaseio.com",
+            projectId: "flashmem-8851f",
+            storageBucket: "flashmem-8851f.appspot.com",
+            messagingSenderId: "79494769845"
+          };
+          firebase.initializeApp(config);
+    </script>
     </head>
     
     <body>
@@ -29,11 +42,16 @@
                                 <div class="main">
 
                                     <div class="BrandTitle" align="left" >
-                                        <h4><a href="file:///D:\FlashMem\categories.html">Back to categories</a></h4>
+                                        <h4><a onclick="window.history.go(-1); return false">Back to categories</a></h4>
                                     </div>
 
-                                    <h3 class="name">Question</h3>
-                                    <p class="text-center">"Some question about programming?"</p>
+                                    <div>
+                                        <h3 class="name">Question</h3>
+                                        <hr>
+                                    </div>
+                                    
+                                    <div id="question">
+                                    </div>
 
                                 </div>
 
@@ -60,9 +78,13 @@
                                     <div class="BrandTitle" align="left" >
                                         <h4><a href="file:///D:\FlashMem\categories.html">Back to categories</a></h4>
                                     </div>
+                                    <div>
+                                        <h3 class="name">Answer</h3>
+                                        <hr>
+                                    </div>
 
-                                    <h3 class="name">Answer</h3>
-                                    <p class="text-center">"Some answer about programming?"</p>
+                                    <div id="answer">
+                                    </div>
 
                                 </div>
 
