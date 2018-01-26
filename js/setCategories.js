@@ -1,11 +1,7 @@
-window.onload = function() {
+window.onload = function() 
+{
 	document.getElementById('backBtn').onclick = resetCategories;
-
-	//if (!data || data.path[1] == undefined) {
-		setCategories();
-	//} else {
-	//	toCategory(data.path[2]);
-	//}
+	setCategories();
 }
 
 function setCategories() 
@@ -34,7 +30,7 @@ function setSubCategories(topic) {
 	clearButtons(div);
 	console.log(topic);
 	document.getElementById('categoryTitle').innerHTML = topic;
-	firebase.database().ref("Categories").child(topic).on("child_added", function(snapshot) 
+	firebase.database().ref("Categories/" + topic).on("child_added", function(snapshot) 
 	{
 		console.log(snapshot.key);
 		var subtopic = snapshot.key;
@@ -43,8 +39,8 @@ function setSubCategories(topic) {
 		a.onclick = function() 
 		{
 			window.location.href = "flashcard.html";
-			sessionStorage.setItem("topic",  topic);
-			sessionStorage.setItem("subTopic", subtopic);
+			sessionStorage.setItem("topic", topic);
+			sessionStorage.setItem("subtopic", subtopic);
 		};
 		a.innerHTML = subtopic;
 		div.appendChild(a);
