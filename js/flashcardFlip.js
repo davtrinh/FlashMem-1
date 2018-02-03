@@ -3,7 +3,7 @@ var subtopic = sessionStorage.getItem('subtopic');
 var divQuestion = document.getElementById("question");
 var divAnswer = document.getElementById("answer");
 var i = 1;
-
+var lastIndex = 1;
 
 window.onload = function() 
 {
@@ -29,7 +29,7 @@ function next()
 	clearCard(divQuestion, divAnswer);
 	setCard();
 	document.getElementById("prevBtn").removeAttribute("disabled");
-	if (i >= 3)
+	if (i >= lastIndex)
 	{
 		document.getElementById("nextBtn").setAttribute("disabled", "disabled");		
 	}
@@ -51,6 +51,16 @@ function clearCard(divQuestion, divAnswer)
 function setCard()
 {
 	var path = firebase.database().ref("Categories/" + topic + "/" + subtopic);
+	console.log("In set card");
+
+	// Can be placed outside as a global variable with additional code?
+	path.once('value', function(snapshot) 
+		{ 
+			lastIndex = snapshot.numChildren();
+			//alert("This is the number of card: " + lastIndex);
+		}
+	);
+
 	path = path.child("Card" + i);
 	var questionRef = path.child("Question");
 	var answerRef = path.child("Answer");
