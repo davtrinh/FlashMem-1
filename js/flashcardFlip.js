@@ -1,7 +1,4 @@
-var topic = sessionStorage.getItem('topic');
-var subtopic = sessionStorage.getItem('subtopic');
-var divQuestion = document.getElementById("question");
-var divAnswer = document.getElementById("answer");
+var strPath = sessionStorage.getItem('path');
 var i = 1;
 var lastIndex = 1;
 
@@ -14,18 +11,22 @@ window.onload = function()
 function prev() 
 {
 	i--;
+	var divQuestion = document.getElementById("question");
+	var divAnswer = document.getElementById("answer");
 	clearCard(divQuestion, divAnswer);
 	setCard();
 	document.getElementById("nextBtn").removeAttribute("disabled");
 	if (i <= 1)
 	{
-		document.getElementById("prevBtn").setAttribute("disabled", "disabled");
+		document.getElementById("prevBtn").setAttribute("disabled", "disabled");		
 	}
 }
 
 function next()
 {
 	i++;
+	var divQuestion = document.getElementById("question");
+	var divAnswer = document.getElementById("answer");
 	clearCard(divQuestion, divAnswer);
 	setCard();
 	document.getElementById("prevBtn").removeAttribute("disabled");
@@ -50,13 +51,18 @@ function clearCard(divQuestion, divAnswer)
 
 function setCard()
 {
-	var path = firebase.database().ref("Categories/" + topic + "/" + subtopic);
+	console.log(strPath);
+	var path = firebase.database().ref(strPath);
 	console.log("In set card");
 
 	// Can be placed outside as a global variable with additional code?
 	path.once('value', function(snapshot) 
 		{ 
 			lastIndex = snapshot.numChildren();
+			if (lastIndex == 1) 
+			{
+				document.getElementById("nextBtn").setAttribute("disabled", "disabled");
+			}
 			//alert("This is the number of card: " + lastIndex);
 		}
 	);

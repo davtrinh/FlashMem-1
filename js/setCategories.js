@@ -33,10 +33,9 @@ function setCategories(path)
 		a.className = "btn btn-info";
 		a.onclick = function() 
 		{
-			if (isLastCategory(path + "/" + subtopic)) 
+			if (isLastCategory(path + "/" + subtopic))  
 			{
 				window.location.href = "flashcard.html";
-				sessionStorage.setItem("subtopic", subtopic);
 				sessionStorage.setItem("path", strPath + "/" + subtopic);
 			}
 			else
@@ -70,7 +69,8 @@ function clearButtons(div)
 function resetCategories() 
 {
 	var div = document.getElementById("categoryContainer");
-	console.log(firebase.database().ref(strPath).parent());
+	document.getElementById("categoryTitle").innerHTML = firebase.database().ref(strPath).parent.key;
+	strPath = strPath.substring(0, strPath.length - (firebase.database().ref(strPath).key.length) - 1);
 	clearButtons(div);
-	setCategories();
+	setCategories(strPath);
 }
