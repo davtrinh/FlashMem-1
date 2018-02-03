@@ -1,50 +1,62 @@
+var strPath = "Categories";
+
 window.onload = function() 
 {
 	document.getElementById('backBtn').onclick = resetCategories;
-	setCategories();
+	initiateCategories();
 }
 
-function setCategories() 
+function initiateCategories() 
 {
 	document.getElementById("categoryTitle").innerHTML = "Select Category";
 	document.getElementById("backBtn").setAttribute("disabled", "disabled");
-	firebase.database().ref("Categories").on("child_added", function(snapshot)
-	{
-		console.log(snapshot.key);
-		var topic = snapshot.key;
+	setCategories(strPath);
+}
+
+function setSubCategories(subtopic) 
+{
+	document.getElementById('backBtn').removeAttribute("disabled");
+	var div = document.getElementById('categoryContainer');
+	clearButtons(div);
+	document.getElementById('categoryTitle').innerHTML = subtopic;
+	strPath += "/" + subtopic;
+	setCategories(strPath);
+}
+
+function setCategories(path)
+{
+	firebase.database().ref(path).on("child_added", function(snapshot)
+	{	
+		var subtopic = snapshot.key;
 		var div = document.getElementById("categoryContainer");
 		var a = document.createElement("a");
 		a.className = "btn btn-info";
 		a.onclick = function() 
 		{
-			setSubCategories(topic);
-		};
-		a.innerHTML = topic;
+			if (isLastCategory(path + "/" + subtopic)) 
+			{
+				window.location.href = "flashcard.html";
+				sessionStorage.setItem("subtopic", subtopic);
+				sessionStorage.setItem("path", strPath + "/" + subtopic);
+			}
+			else
+			{
+				setSubCategories(subtopic);
+			}
+		}
+		a.innerHTML = subtopic;
 		div.appendChild(a);
 	});
 }
 
-function setSubCategories(topic) {
-	document.getElementById('backBtn').removeAttribute("disabled");
-	var div = document.getElementById('categoryContainer');
-	clearButtons(div);
-	console.log(topic);
-	document.getElementById('categoryTitle').innerHTML = topic;
-	firebase.database().ref("Categories/" + topic).on("child_added", function(snapshot) 
+function isLastCategory(path)
+{
+	var hasCard;
+	firebase.database().ref(path).once("value", function(snapshot)
 	{
-		console.log(snapshot.key);
-		var subtopic = snapshot.key;
-		var a = document.createElement('a');
-		a.className = "btn btn-info";
-		a.onclick = function() 
-		{
-			window.location.href = "flashcard.html";
-			sessionStorage.setItem("topic", topic);
-			sessionStorage.setItem("subtopic", subtopic);
-		};
-		a.innerHTML = subtopic;
-		div.appendChild(a);
+		hasCard = snapshot.hasChild("Card1");
 	});
+	return hasCard;
 }
 
 function clearButtons(div) 
@@ -58,7 +70,7 @@ function clearButtons(div)
 function resetCategories() 
 {
 	var div = document.getElementById("categoryContainer");
+	console.log(firebase.database().ref(strPath).parent());
 	clearButtons(div);
-	document.getElementById("categoryTitle").innerHTML = "";
 	setCategories();
 }

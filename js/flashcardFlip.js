@@ -1,6 +1,9 @@
 var topic = sessionStorage.getItem('topic');
 var subtopic = sessionStorage.getItem('subtopic');
+var divQuestion = document.getElementById("question");
+var divAnswer = document.getElementById("answer");
 var i = 1;
+
 
 window.onload = function() 
 {
@@ -10,8 +13,8 @@ window.onload = function()
 
 function prev() 
 {
-	i -= 1 ;
-	clearCard();
+	i--;
+	clearCard(divQuestion, divAnswer);
 	setCard();
 	document.getElementById("nextBtn").removeAttribute("disabled");
 	if (i <= 1)
@@ -22,13 +25,26 @@ function prev()
 
 function next()
 {
-	i += 1;
-	clearCard();
+	i++;
+	clearCard(divQuestion, divAnswer);
 	setCard();
 	document.getElementById("prevBtn").removeAttribute("disabled");
 	if (i >= 3)
 	{
 		document.getElementById("nextBtn").setAttribute("disabled", "disabled");		
+	}
+}
+
+function clearCard(divQuestion, divAnswer)
+{
+	while (divQuestion.firstChild)
+	{
+		divQuestion.removeChild(divQuestion.firstChild);
+	}
+
+	while (divAnswer.firstChild)
+	{
+		divAnswer.removeChild(divAnswer.firstChild);
 	}
 }
 
@@ -56,21 +72,6 @@ function setCard()
 	});
 }
 
-function clearCard()
-{
-	var divQuestion = document.getElementById("question");
-	var divAnswer = document.getElementById("answer");
-
-	while (divQuestion.firstChild)
-	{
-		divQuestion.removeChild(divQuestion.firstChild);
-	}
-
-	while (divAnswer.firstChild)
-	{
-		divAnswer.removeChild(divAnswer.firstChild);
-	}
-}
 
 function rotateCard(btn)
 {
