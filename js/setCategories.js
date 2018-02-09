@@ -87,4 +87,9 @@ function resetCategories()
 
 	clearButtons(div);
 	setCategories(strPath);
+	console.log(firebase.database().ref(strPath).key);
+	if (firebase.database().ref(strPath).key == "Categories") 
+	{
+		document.getElementById("backBtn").setAttribute("disabled", "disabled");
+	};
 }
