@@ -81,9 +81,9 @@ function setCard()
 		}
 	);
 
+	path = path.child("Card" + intIndex);
 	var questionRef = path.child("Question");
 	var answerRef = path.child("Answer");
-	path = path.child("Card" + i);
 
 	// Set the question value onto the card
 	questionRef.once('value', function(snapshot)
@@ -104,7 +104,7 @@ function setCard()
 		p.innerHTML = answer;
 		div.appendChild(p);
 	});
-}
+} 
 
 /* Find container of the card and add/remove the class "hover"
 Using JQuery*/
